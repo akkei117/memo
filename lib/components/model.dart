@@ -1,6 +1,6 @@
 class Model {
   String title;
-  String body;
+  String? body;
 
   Model({required this.body , required this.title});
 
