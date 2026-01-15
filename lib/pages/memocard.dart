@@ -5,8 +5,10 @@ import 'package:memo/components/model.dart';
 
 class Memocard extends StatelessWidget {
 
-  Model modelobject;
-  Memocard({super.key , required this.modelobject});
+  final Model modelobject;
+  final VoidCallback onDelete;
+
+  Memocard({super.key , required this.modelobject , required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,7 @@ class Memocard extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                // onTap: () {
-                //   Navigator.push(context, MaterialPageRoute(builder: (context) => Memopage(modelObject: modelobject)));
-                // },
+
                 child: Column(
                   mainAxisAlignment: .start,
                   crossAxisAlignment: .start,
@@ -74,9 +74,7 @@ class Memocard extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: InkWell(onTap: () {
-                
-              },child: Icon(Icons.delete, color: Colors.redAccent, size: 30)),
+              child: InkWell(onTap: onDelete,child: Icon(Icons.delete, color: Colors.redAccent, size: 30)),
             ),
           ],
         ),

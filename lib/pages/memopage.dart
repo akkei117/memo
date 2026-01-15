@@ -4,6 +4,7 @@ import 'package:memo/components/model.dart';
 
 class Memopage extends StatefulWidget {
   Model modelObject;
+  
   Memopage({super.key, required this.modelObject});
 
   @override

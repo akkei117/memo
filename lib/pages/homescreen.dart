@@ -14,8 +14,14 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   List<Model> memolist = [
     Model(body: "body1", title: "title1"),
-    Model(body: "body2", title: ""),
+    Model(body: "body2", title: "title2"),
   ];
+
+  void deleteMemo (int index) {
+    setState(() {
+      memolist.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +50,7 @@ class _HomescreenState extends State<Homescreen> {
           itemCount: memolist.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () async{
+              onTap: () async {
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -55,14 +61,23 @@ class _HomescreenState extends State<Homescreen> {
 
                 setState(() {});
               },
-              child: Memocard(modelobject: memolist[index]),
+              child: Memocard(modelobject: memolist[index] , onDelete:() => deleteMemo(index),),
             );
           },
         ),
 
         floatingActionButton: InkWell(
-          onTap: () {
+          onTap: () async {
+            memolist.add(Model(body: "Body", title: "title"));
 
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Memopage(modelObject: memolist.last),
+              ),
+            );
+
+            setState(() {});
           },
           child: Container(
             decoration: BoxDecoration(
