@@ -4,14 +4,17 @@ import 'package:memo/components/model.dart';
 import 'package:memo/pages/memocard.dart';
 import 'package:memo/pages/memopage.dart';
 
-class Homescreen extends StatelessWidget {
+class Homescreen extends StatefulWidget {
   Homescreen({super.key});
 
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
   List<Model> memolist = [
     Model(body: "body1", title: "title1"),
-    Model(body: "body2", title: "title2"),
-    Model(body: "body3", title: "title3"),
-    Model(body: "body4", title: "title4"),
+    Model(body: "body2", title: ""),
   ];
 
   @override
@@ -41,14 +44,16 @@ class Homescreen extends StatelessWidget {
           itemCount: memolist.length,
           itemBuilder: (context, index) {
             return InkWell(
-              onTap: () {
-                Navigator.push(
+              onTap: () async{
+                await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
                         Memopage(modelObject: memolist[index]),
                   ),
                 );
+
+                setState(() {});
               },
               child: Memocard(modelobject: memolist[index]),
             );
@@ -56,7 +61,9 @@ class Homescreen extends StatelessWidget {
         ),
 
         floatingActionButton: InkWell(
-          onTap: () {},
+          onTap: () {
+
+          },
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

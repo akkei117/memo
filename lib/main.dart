@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memo/pages/homescreen.dart';
+// import 'package:memo/pages/memocard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
       home: Homescreen(),
       routes: {
         //the List for routes
+        '/home' : (context) => Homescreen(),
+        
       },
     );
   }

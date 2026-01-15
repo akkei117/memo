@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:memo/components/model.dart';
-import 'package:memo/pages/memopage.dart';
+// import 'package:memo/pages/memopage.dart';
 
 class Memocard extends StatelessWidget {
 
@@ -23,10 +23,9 @@ class Memocard extends StatelessWidget {
           children: [
             Expanded(
               child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Memopage(modelObject: modelobject)));
-                },
-              
+                // onTap: () {
+                //   Navigator.push(context, MaterialPageRoute(builder: (context) => Memopage(modelObject: modelobject)));
+                // },
                 child: Column(
                   mainAxisAlignment: .start,
                   crossAxisAlignment: .start,
@@ -75,7 +74,9 @@ class Memocard extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Icon(Icons.delete, color: Colors.redAccent, size: 30),
+              child: InkWell(onTap: () {
+                
+              },child: Icon(Icons.delete, color: Colors.redAccent, size: 30)),
             ),
           ],
         ),
